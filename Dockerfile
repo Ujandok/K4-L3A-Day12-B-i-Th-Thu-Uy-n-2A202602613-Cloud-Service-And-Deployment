@@ -35,6 +35,7 @@ WORKDIR /app
 RUN useradd --create-home --uid 1000 appuser
 COPY --from=builder /install /usr/local
 COPY --chown=appuser:appuser app/ ./app/
+COPY --chown=appuser:appuser utils/ ./utils/
 USER appuser
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
